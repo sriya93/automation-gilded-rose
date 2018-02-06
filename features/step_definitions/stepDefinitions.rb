@@ -49,29 +49,36 @@ Then(/^the results are for Ocado$/) do
 end
 
 When(/^I click more$/) do
-  pending
+  find(:xpath, '//*[@id="leftnavc"]/div/div[6]/div[5]').click
 end
 
 And(/^I click on Eat big$/) do
-  pending
+  find(:xpath, '//*[@id="leftnavc"]/div/div[6]/div[3]/div[1]/a').click
 end
 
 Then(/^the results are for Eat big$/) do
-  pending
+  @page.verify_shopping_eatbig('Eat big')
 end
 
 When(/^I enter £20$/) do
-  pending
+  within find(:xpath, '//*[@class="_Jrs sh-dr__pr"]/div[1]') do
+    input = find(:xpath, '//*[@name="lower"]')
+    input.send_keys("20")
+  end
 end
 
 And(/^I enter £30$/) do
-  pending
+  within find(:xpath, '//*[@class="_Jrs sh-dr__pr"]/div[1]') do
+    input = find(:xpath, '//*[@name="upper"]')
+    input.send_keys("30")
+  end
 end
 
 And(/^I click go$/) do
-  pending
+  find(:xpath, '//*[@class="_Jrs sh-dr__pr"]/button').click
 end
 
-Then(/^the results are all between £20 and £30$/) do |arg|
-  pending
+Then(/^the results are all between £20 and £30$/) do
+  @page.verify_price()
 end
+
